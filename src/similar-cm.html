@@ -1,20 +1,21 @@
 <link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
-
-<polymer-element name="similar-cm" attributes="">
+<link rel="import" href="../node_modules/ui-typeahead/ui-typeahead.html">
+<polymer-element name="similar-cm" attributes="urls limit">
 <template>
+  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="./similar-cm.css">
   <content></content>
       <glg-nectar 
-          urls="wss://nectar.glgroup.com/ws" 
+          id="nectar"
+          urls="{{urls}}" 
           entities='["cm", "cm-localized"]'
           trigger="inputChange"
-          limit="20"
+          limit="{{limit}}"
           >
 
         <ui-typeahead 
           icon="fa-search"
           placeholder="Enter stuff">
-
               <template id="results" repeat="{{resultset}}">
                 <div>
                   <div class="separator">
@@ -31,27 +32,8 @@
                   </template>
                 </div>
               </template>
-
-          </template>
         </ui-typeahead>
       </glg-nectar>
 </template>
 <script src="./similar-cm.js"></script>
-    <script>
-      document.addEventListener('polymer-ready', function() {
-        //poke your element here
-        //poke your element here
-        var nectar = document.querySelector('similar-cm');
-        var template = document.querySelector('#results');
-        
-
-        nectar.addEventListener('results', function(evt) {
-          
-          template.model = evt.detail;
-          Platform.performMicrotaskCheckpoint(); 
-          console.log("template model updated", template.model);
-        });
-      });
-
-    </script>
 </polymer-element>

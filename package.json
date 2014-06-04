@@ -15,8 +15,11 @@
     "gulp-concat": "",
     "vulcanize": "",
     "express": "",
+    "font-awesome": "",
+    "lodash": "2.4.0",
     "polymer": "git://github.com/Custom-Elements/polymer",
     "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
+    "ui-typeahead": "git://github.com/nandrews0424/ui-typeahead",
     "express-livereload": "0.0.24"
   },
   "license": "MIT",

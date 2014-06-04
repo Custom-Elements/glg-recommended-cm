@@ -1,3 +1,61 @@
 :host {
   display: block;
 }
+
+body {
+    font-family: "Helvetica Neue", "Helvetica", Arial;
+    color: #454545;
+}
+
+ui-typeahead {
+    width: 50%;
+}
+
+ui-typeahead-item {
+    background: #fff;
+    padding: .65em;
+}
+
+ui-typeahead-item i {
+    margin-right: .3em;
+    color: #666;
+}
+
+ui-typeahead-item[focused] {
+    background: #eee;
+}
+
+ui-typeahead-item[selected] {
+    background:#fff;
+}
+
+.separator {
+    padding: .65em;
+    background: #f3f3f3;
+}
+
+ui-typeahead[selected] ui-typeahead-item, ui-typeahead[selected] .separator {
+    display:none;
+}
+
+ui-typeahead[selected] ui-typeahead-item[selected] {
+    display:block;
+    position: absolute;
+    left:0;
+    right:0;
+}
+
+ui-typeahead-item[selected]::before {
+    float:right;
+    content: "(change)";
+    color: #89A5AF;
+}
+
+ui-typeahead-item[hide] {
+    display:none;
+}
+
+p {
+    font-size: 1.25em;
+    width: 50%;
+}

@@ -1,7 +1,7 @@
 #similar-cm
 *TODO* tell me all about your element.
 
-
+    _ = require 'lodash'
     Polymer 'similar-cm',
 
 ##Events
@@ -15,12 +15,18 @@
 
 ##Polymer Lifecycle
 
-      created: ->
+    created: ->
 
-      ready: ->
+    ready: ->
 
-      attached: ->
+    attached: ->
 
-      domReady: ->
+      window.addEventListener 'results', (evt) =>
+        @$.results.model = evt.detail
+        Platform.performMicrotaskCheckpoint() 
+        console.log "template model updated", template.model
 
-      detached: ->
+
+    domReady: ->
+
+    detached: ->
