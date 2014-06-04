@@ -1,0 +1,57 @@
+<link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
+
+<polymer-element name="similar-cm" attributes="">
+<template>
+  <link rel="stylesheet" type="text/css" href="./similar-cm.css">
+  <content></content>
+      <glg-nectar 
+          urls="wss://nectar.glgroup.com/ws" 
+          entities='["cm", "cm-localized"]'
+          trigger="inputChange"
+          limit="20"
+          >
+
+        <ui-typeahead 
+          icon="fa-search"
+          placeholder="Enter stuff">
+
+              <template id="results" repeat="{{resultset}}">
+                <div>
+                  <div class="separator">
+                    {{type}}
+                  </div>
+                  <template repeat="{{results}}">
+                    
+                    <ui-typeahead-item>
+                      <i class="fa fa-user {{type}}"></i> 
+                      <strong>{{name}}</strong> 
+                      <span>{{title}}</span>                    
+                    </ui-typeahead-item>
+
+                  </template>
+                </div>
+              </template>
+
+          </template>
+        </ui-typeahead>
+      </glg-nectar>
+</template>
+<script src="./similar-cm.js"></script>
+    <script>
+      document.addEventListener('polymer-ready', function() {
+        //poke your element here
+        //poke your element here
+        var nectar = document.querySelector('similar-cm');
+        var template = document.querySelector('#results');
+        
+
+        nectar.addEventListener('results', function(evt) {
+          
+          template.model = evt.detail;
+          Platform.performMicrotaskCheckpoint(); 
+          console.log("template model updated", template.model);
+        });
+      });
+
+    </script>
+</polymer-element>

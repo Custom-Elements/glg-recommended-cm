@@ -1,0 +1,27 @@
+{
+  "name": "similar-cm",
+  "version": "0.0.0",
+  "dependencies": {
+    "coffeeify": "",
+    "coffee-script": "",
+    "browserify": "",
+    "browserify-data": "",
+    "gulp": "",
+    "gulp-browserify": "",
+    "gulp-shell": "",
+    "gulp-less": "",
+    "gulp-replace": "",
+    "gulp-rename": "",
+    "gulp-concat": "",
+    "vulcanize": "",
+    "express": "",
+    "polymer": "git://github.com/Custom-Elements/polymer",
+    "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
+    "express-livereload": "0.0.24"
+  },
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "gulp build",
+    "test": "gulp watch"
+  }
+}
