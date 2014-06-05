@@ -24,8 +24,6 @@
       window.addEventListener 'results', (evt) =>
         @$.results.model = evt.detail
         Platform.performMicrotaskCheckpoint() 
-        console.log "template model updated", template.model
-
 
     domReady: ->
 
