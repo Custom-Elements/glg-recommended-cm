@@ -10,6 +10,7 @@
     "font-awesome": "",
     "polymer": "git://github.com/Custom-Elements/polymer",
     "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
+    "core-ajax": "git://github.com/Custom-Elements/core-ajax",
     "gulp": "",
     "gulp-browserify": "",
     "gulp-shell": "",
