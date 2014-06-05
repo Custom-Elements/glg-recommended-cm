@@ -6,6 +6,10 @@
     "coffee-script": "",
     "browserify": "",
     "browserify-data": "",
+    "express": "",
+    "font-awesome": "",
+    "polymer": "git://github.com/Custom-Elements/polymer",
+    "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
     "gulp": "",
     "gulp-browserify": "",
     "gulp-shell": "",
@@ -14,13 +18,8 @@
     "gulp-rename": "",
     "gulp-concat": "",
     "vulcanize": "",
-    "express": "",
-    "font-awesome": "",
-    "lodash": "2.4.0",
-    "polymer": "git://github.com/Custom-Elements/polymer",
-    "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
-    "ui-typeahead": "git://github.com/nandrews0424/ui-typeahead",
-    "express-livereload": "0.0.24"
+    "express-livereload": "0.0.24",
+    "lodash": "^2.4.0"
   },
   "license": "MIT",
   "scripts": {
