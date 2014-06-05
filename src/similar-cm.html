@@ -1,8 +1,8 @@
-<link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
 <link rel="import" href="../node_modules/glg-nectar/node_modules/ui-typeahead/build/ui-typeahead.html" />
+<link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
 <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css"/>
 <link rel="stylesheet" type="text/css" href="./similar-cm.css">
-<polymer-element name="similar-cm" attributes="urls limit">
+<polymer-element name="similar-cm" attributes="urls limit entities results resultset trigger">
 <template>
   <content></content>
       <glg-nectar 
@@ -12,15 +12,11 @@
           trigger="inputChange"
           limit="{{limit}}"
           >
-
         <ui-typeahead 
           icon="fa-search"
           placeholder="Enter stuff">
               <template id="results" repeat="{{resultset}}">
                 <div>
-                  <div class="separator">
-                    {{type}}
-                  </div>
                   <template repeat="{{results}}">
                     
                     <ui-typeahead-item>

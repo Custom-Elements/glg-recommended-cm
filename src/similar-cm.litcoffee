@@ -8,6 +8,14 @@
 *TODO* describe the custom event `name` and `detail` that are fired.
 
 ##Attributes and Change Handlers
+    triggerChanged: (oldVal,newVal) ->
+        @removeEventListener oldVal, @loadResults if oldVal
+        @addEventListener newVal, @loadResults
+
+    entitiesChanged: ->
+      e = @entities
+      e = JSON.parse(e) if e[0] is '['
+      @entitiesParsed = e        
 
 ##Methods
 
@@ -20,11 +28,12 @@
     ready: ->
 
     attached: ->
+      template = @$.results
 
       window.addEventListener 'results', (evt) =>
-        @$.results.model = evt.detail
+        template.model = evt.detail
         Platform.performMicrotaskCheckpoint() 
-
+        console.log("template model updated", template.model);
     domReady: ->
 
     detached: ->

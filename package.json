@@ -17,9 +17,9 @@
     "gulp-replace": "",
     "gulp-rename": "",
     "gulp-concat": "",
-    "vulcanize": "",
     "express-livereload": "0.0.24",
-    "lodash": "^2.4.0"
+    "lodash": "^2.4.0",
+    "vulcanize": ""
   },
   "license": "MIT",
   "scripts": {
