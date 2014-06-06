@@ -20,7 +20,7 @@
     cmid: (id) ->
       @cmid = id
       ajax = @$.aj
-      ajax.params = {"COUNCIL_MEMBER_ID":@cmid]}
+      ajax.params = {"COUNCIL_MEMBER_ID":@cmid}
 
 ##Methods
 
