@@ -1,0 +1,9 @@
+<link rel="import" href="../node_modules/core-websocket/build/core-websocket.html" />
+
+<polymer-element name="glg-nectar" attributes="urls limit entities results resultset trigger">
+<template>
+  <content></content>
+  <core-websocket id="socket" urls="{{urls}}"></core-websocket>
+</template>
+<script src="./glg-nectar.js"></script>
+</polymer-element>
