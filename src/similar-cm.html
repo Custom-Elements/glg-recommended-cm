@@ -37,7 +37,7 @@
         <div id="similarcms">
           <ul>
             <template  repeat="{{ item in resp }}">
-            <li>{{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) <i class="fa fa-times"></i></li>
+            <li>{{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) <i class="fa fa-times" href="javascript:removerel({{item.RELATED_CM_ID}})"></i></li>
             </template>
           </ul> 
         </div>
