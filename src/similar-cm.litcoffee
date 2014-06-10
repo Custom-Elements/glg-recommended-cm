@@ -28,7 +28,8 @@
       addcm = @$.addcm
       getcms.method="POST"
       getcms.params='{"COUNCIL_MEMBER_ID":' + @cmid + '}'
-      getcms.url="http://localhost:7071/councilMember/similarcm/getRelationshipsByCMID.mustache"
+      getcms.withCredentials="true"
+      getcms.url="https://query.glgroup.com/councilMember/similarcm/getRelationshipsByCMID.mustache"
       getcms.go()
 
       window.addEventListener 'results', (evt) =>
@@ -39,8 +40,9 @@
       typeahead.addEventListener 'change', (evt) =>
           if evt.detail.item && evt.detail.item.selected?
             addcm.method="POST"
+            addcm.withCredentials="true"
             addcm.params='{"COUNCIL_MEMBER_ID":' + @cmid + ',"RELATED_CM_ID":' +  evt.detail.item.id + ', "CREATED_BY":' + @createdby + '}'
-            addcm.url="http://localhost:7071/councilMember/similarcm/addRelationship.mustache"
+            addcm.url="https://query.glgroup.com/councilMember/similarcm/addRelationship.mustache"
             addcm.go()
             foo = 
               detail:
