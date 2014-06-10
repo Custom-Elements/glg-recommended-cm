@@ -32,11 +32,13 @@
               </template>
         </ui-typeahead>
       </glg-nectar>
+      <core-ajax 
+        id="ca"
+        url="http://localhost:7071/councilMember/similarcm/getRelationshipsByCMID.mustache"
+        response="{{resp}}"
+        handleAs="json" >
+      </core-ajax>
+      <p>{{resp[0].TITLE}}</p>
 </template>
 <script src="./similar-cm.js"></script>
-<core-ajax auto 
-  id="aj"
-  url="http://localhost:7071/councilMember/similarcm/getRelationshipsByCMID.mustache"
-  handleAs="json">
-</core-ajax>
 </polymer-element>

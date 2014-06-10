@@ -15,10 +15,6 @@
 
 
 
-
-
-
-
 ##Methods
 
 ##Event Handlers
@@ -26,6 +22,13 @@
 
 
 ##Polymer Lifecycle
+
+
+
+
+
+
+
 
 
 

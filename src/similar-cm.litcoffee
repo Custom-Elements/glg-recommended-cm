@@ -17,11 +17,6 @@
       e = JSON.parse(e) if e[0] is '['
       @entitiesParsed = e        
 
-    cmid: (id) ->
-      @cmid = id
-      ajax = @$.aj
-      ajax.params = {"COUNCIL_MEMBER_ID":@cmid}
-
 ##Methods
 
 ##Event Handlers
@@ -37,15 +32,22 @@
     attached: ->
       template = @$.results
       typeahead = @$.ta
+      ajax = @$.ca
 
       window.addEventListener 'results', (evt) =>
         template.model = evt.detail
         Platform.performMicrotaskCheckpoint() 
-        console.log("template model updated", template.model);
+        console.log("template model updated", template.model)
 
       typeahead.addEventListener 'change', (evt) =>
         alert evt.detail.item.id
+      
+      ajax.addEventListener 'core-response', (evt) =>
+        console.log(evt.detail.response);
 
+      ajax.method="POST"
+      ajax.params='{"COUNCIL_MEMBER_ID":"55"}'
+      ajax.go()
 
     domReady: ->
 
