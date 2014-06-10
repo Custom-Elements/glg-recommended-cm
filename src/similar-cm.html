@@ -1,10 +1,10 @@
 <link rel="import" href="../node_modules/glg-nectar/node_modules/ui-typeahead/build/ui-typeahead.html" />
 <link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
 <link rel="import" href="../node_modules/ui-toolkit/build/ui-toolkit.html" />
-<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css"/>
 <polymer-element name="similar-cm" attributes="limit entities results resultset trigger change cmid createdby">
 <template>
   <link rel="stylesheet" href="./similar-cm.css"/>
+  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css"/>
   <content></content>
       <glg-nectar 
           id="nectar"
@@ -37,7 +37,7 @@
         <div id="similarcms">
           <ul>
             <template  repeat="{{ item in resp }}">
-            <li>{{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}})</li>
+            <li>{{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) <i class="fa fa-times"></i></li>
             </template>
           </ul> 
         </div>
