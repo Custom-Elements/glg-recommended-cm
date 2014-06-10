@@ -46,7 +46,7 @@
         console.log(evt.detail.response);
 
       ajax.method="POST"
-      ajax.params='{"COUNCIL_MEMBER_ID":"55"}'
+      ajax.params='{"COUNCIL_MEMBER_ID":' + @cmid + '}'
       ajax.go()
 
     domReady: ->

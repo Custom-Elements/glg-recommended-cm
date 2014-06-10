@@ -34,10 +34,10 @@
         id="ca"
         url="http://localhost:7071/councilMember/similarcm/getRelationshipsByCMID.mustache"
         response="{{resp}}"
-        handleAs="json" >
-        <div>
+        handleAs="json">
+        <div id="similarcms">
           <ul>
-            <template id="similarcms" repeat="{{ item in resp }}">
+            <template  repeat="{{ item in resp }}">
             <li>{{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}})</li>
             </template>
           </ul> 
