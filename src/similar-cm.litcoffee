@@ -55,6 +55,9 @@
 
       getcms.addEventListener 'core-response', (evt) =>
         console.log(evt.detail.response);
+ 
+    removerel:  (event) ->
+        alert event.currentTarget.id 
 
 
     domReady: ->
