@@ -8,15 +8,6 @@
 *TODO* describe the custom event `name` and `detail` that are fired.
 
 ##Attributes and Change Handlers
-    triggerChanged: (oldVal,newVal) ->
-        @removeEventListener oldVal, @loadResults if oldVal
-        @addEventListener newVal, @loadResults
-
-    entitiesChanged: ->
-      e = @entities
-      e = JSON.parse(e) if e[0] is '['
-      @entitiesParsed = e        
-
 ##Methods
 
 ##Event Handlers
@@ -32,7 +23,13 @@
     attached: ->
       template = @$.results
       typeahead = @$.ta
-      ajax = @$.ca
+      getcms = @$.likecms
+      nectar = @$.nectar
+      addcm = @$.addcm
+      getcms.method="POST"
+      getcms.params='{"COUNCIL_MEMBER_ID":' + @cmid + '}'
+      getcms.url="http://localhost:7071/councilMember/similarcm/getRelationshipsByCMID.mustache"
+      getcms.go()
 
       window.addEventListener 'results', (evt) =>
         template.model = evt.detail
@@ -40,14 +37,23 @@
         console.log("template model updated", template.model)
 
       typeahead.addEventListener 'change', (evt) =>
-        alert evt.detail.item.id
-      
-      ajax.addEventListener 'core-response', (evt) =>
+          if evt.detail.item && evt.detail.item.selected?
+            addcm.method="POST"
+            addcm.params='{"COUNCIL_MEMBER_ID":' + @cmid + ',"RELATED_CM_ID":' +  evt.detail.item.id + ', "CREATED_BY":' + @createdby + '}'
+            addcm.url="http://localhost:7071/councilMember/similarcm/addRelationship.mustache"
+            addcm.go()
+            foo = 
+              detail:
+                value:""
+            typeahead.clear()
+            nectar.loadResults(foo)
+
+      addcm.addEventListener 'core-response', (evt) =>
+        getcms.go()
+
+      getcms.addEventListener 'core-response', (evt) =>
         console.log(evt.detail.response);
 
-      ajax.method="POST"
-      ajax.params='{"COUNCIL_MEMBER_ID":' + @cmid + '}'
-      ajax.go()
 
     domReady: ->
 

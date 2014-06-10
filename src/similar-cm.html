@@ -2,7 +2,7 @@
 <link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
 <link rel="import" href="../node_modules/ui-toolkit/build/ui-toolkit.html" />
 <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css"/>
-<polymer-element name="similar-cm" attributes="limit entities results resultset trigger change cmid">
+<polymer-element name="similar-cm" attributes="limit entities results resultset trigger change cmid createdby">
 <template>
   <link rel="stylesheet" href="./similar-cm.css"/>
   <content></content>
@@ -31,9 +31,8 @@
         </ui-typeahead>
       </glg-nectar>
       <core-ajax 
-        id="ca"
-        url="http://localhost:7071/councilMember/similarcm/getRelationshipsByCMID.mustache"
-        response="{{resp}}"
+        id ="likecms"
+        response={{resp}}
         handleAs="json">
         <div id="similarcms">
           <ul>
@@ -42,6 +41,9 @@
             </template>
           </ul> 
         </div>
+      </core-ajax>
+      <core-ajax id="addcm"
+        handleAs="json">
       </core-ajax>
 </template>
 <script src="./similar-cm.js"></script>
