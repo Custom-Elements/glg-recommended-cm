@@ -1,10 +1,9 @@
-<link rel="import" href="../node_modules/glg-nectar/node_modules/ui-typeahead/build/ui-typeahead.html" />
 <link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
 <link rel="import" href="../node_modules/ui-toolkit/build/ui-toolkit.html" />
 <polymer-element name="similar-cm" attributes="limit entities results resultset trigger change cmid createdby">
 <template>
-  <link rel="stylesheet" href="./similar-cm.css"/>
-  <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css"/>
+  <link rel="stylesheet" href="./similar-cm.less"/>
+  <link rel="stylesheet" href="../node_modules/ui-fonts/build/font-awesome.css"/>
   <content></content>
       <glg-nectar 
           id="nectar"
@@ -46,5 +45,5 @@
         handleAs="json">
       </core-ajax>
 </template>
-<script src="./similar-cm.js"></script>
+<script src="./similar-cm.litcoffee"></script>
 </polymer-element>

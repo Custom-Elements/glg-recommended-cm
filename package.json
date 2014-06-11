@@ -2,29 +2,16 @@
   "name": "similar-cm",
   "version": "0.0.0",
   "dependencies": {
-    "browserify": "",
-    "browserify-data": "",
-    "coffee-script": "",
-    "coffeeify": "",
-    "express": "",
-    "express-livereload": "0.0.24",
-    "font-awesome": "",
-    "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
-    "gulp": "",
-    "gulp-browserify": "",
-    "gulp-concat": "",
-    "gulp-less": "",
-    "gulp-rename": "",
-    "gulp-replace": "",
-    "gulp-shell": "",
-    "lodash": "^2.4.0",
-    "polymer": "git://github.com/Custom-Elements/polymer",
-    "ui-toolkit": "0.0.3",
-    "vulcanize": ""
+    "lodash": "^2.4.1",
+    "polymer": "git://github.com/custom-elements/polymer#master",
+    "polymer-tools": "git://github.com/custom-elements/polymer-tools#master",
+    "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
+    "ui-toolkit": "0.0.5",
+    "glg-nectar": "git://github.com/Custom-Elements/glg-nectar"
   },
-  "license": "MIT",
+  "license": "ISC",
   "scripts": {
-    "postinstall": "gulp build",
-    "test": "gulp watch"
+    "postinstall": "polymer-build src/ build/",
+    "test": "polymer-build watch . src/ build/"
   }
 }

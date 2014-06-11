@@ -3,7 +3,7 @@ This element provides access to GLG's nectar search service, listening for the s
 event and retrieving data from the configured indexes. Use it to wrap a particular element 
 that you'd like to trigger data retrieval.
 
-    _ = require('../node_modules/lodash/dist/lodash.js')
+    _ = require('lodash')
     Polymer 'glg-nectar',
 
 ##Attributes and Change Handlers
