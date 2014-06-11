@@ -25,7 +25,7 @@
       window.typeahead = @$.ta
       window.getcms = @$.likecms
       nectar = @$.nectar
-      addcm = @$.genericpost
+      addcm = @$.addrel
       getcms.method="POST"
       getcms.params='{"COUNCIL_MEMBER_ID":' + @cmid + '}'
       getcms.withCredentials="true"
@@ -57,7 +57,7 @@
         console.log(evt.detail.response);
  
     removerel:  (event) ->
-      removecm = @$.genericpost
+      removecm = @$.removerel
       removecm.method="POST"
       removecm.withCredentials="true"
       removecm.params='{"COUNCIL_MEMBER_ID":' + @cmid + ',"RELATED_CM_ID":' +  event.currentTarget.id + '}'

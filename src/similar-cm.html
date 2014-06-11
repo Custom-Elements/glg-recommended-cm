@@ -3,7 +3,7 @@
 <polymer-element name="similar-cm" attributes="limit entities results resultset trigger change cmid createdby">
 <template>
   <link rel="stylesheet" href="./similar-cm.less"/>
-  <link rel="stylesheet" href="../node_modules/ui-fonts/build/font-awesome.css"/>
+  <link rel="stylesheet" href="../node_modules/ui-fonts/build/font-awesome-styles.less"/>
   <content></content>
       <glg-nectar 
           id="nectar"
@@ -17,7 +17,6 @@
           icon="fa-search"
           placeholder="Enter stuff">
               <template id="results" repeat="{{resultset}}">
-              <div>
                   <template repeat="{{results}}">
                   <ui-typeahead-item id={{id}}>
                       <i class="fa fa-user {{type}}"></i> 
@@ -25,7 +24,6 @@
                       <span>{{title}}</span>                    
                     </ui-typeahead-item>
                   </template>
-                </div>
               </template>
         </ui-typeahead>
       </glg-nectar>
@@ -41,7 +39,10 @@
           </ul> 
         </div>
       </core-ajax>
-      <core-ajax id="genericpost"
+      <core-ajax id="addrel"
+        handleAs="json">
+      </core-ajax>
+      <core-ajax id="removerel"
         handleAs="json">
       </core-ajax>
 </template>
