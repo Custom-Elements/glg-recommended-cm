@@ -21,11 +21,11 @@
     ready: ->
 
     attached: ->
-      template = @$.results
-      typeahead = @$.ta
-      getcms = @$.likecms
+      window.template = @$.results
+      window.typeahead = @$.ta
+      window.getcms = @$.likecms
       nectar = @$.nectar
-      addcm = @$.addcm
+      addcm = @$.genericpost
       getcms.method="POST"
       getcms.params='{"COUNCIL_MEMBER_ID":' + @cmid + '}'
       getcms.withCredentials="true"
@@ -57,7 +57,14 @@
         console.log(evt.detail.response);
  
     removerel:  (event) ->
-        alert event.currentTarget.id 
+      removecm = @$.genericpost
+      removecm.method="POST"
+      removecm.withCredentials="true"
+      removecm.params='{"COUNCIL_MEMBER_ID":' + @cmid + ',"RELATED_CM_ID":' +  event.currentTarget.id + '}'
+      removecm.url="https://query.glgroup.com/councilMember/similarcm/deleteRelationship.mustache"
+      removecm.go()
+      removecm.addEventListener 'core-response', (event) =>
+        getcms.go()
 
 
     domReady: ->
