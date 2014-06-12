@@ -3,10 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "lodash": "^2.4.1",
-    "polymer": "git://github.com/custom-elements/polymer#master",
+    "ui-toolkit": "",
     "polymer-tools": "git://github.com/custom-elements/polymer-tools#master",
     "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
-    "ui-toolkit": "",
     "glg-nectar": "git://github.com/Custom-Elements/glg-nectar"
   },
   "license": "ISC",
