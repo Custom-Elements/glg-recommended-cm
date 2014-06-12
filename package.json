@@ -6,7 +6,7 @@
     "polymer": "git://github.com/custom-elements/polymer#master",
     "polymer-tools": "git://github.com/custom-elements/polymer-tools#master",
     "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
-    "ui-toolkit": "0.0.5",
+    "ui-toolkit": "",
     "glg-nectar": "git://github.com/Custom-Elements/glg-nectar"
   },
   "license": "ISC",
