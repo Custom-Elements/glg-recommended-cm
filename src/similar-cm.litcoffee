@@ -24,6 +24,7 @@
       window.template = @$.results
       window.typeahead = @$.ta
       window.getcms = @$.likecms
+      window.removecm = @$.removerel
       nectar = @$.nectar
       addcm = @$.addrel
       getcms.method="POST"
@@ -55,16 +56,16 @@
 
       getcms.addEventListener 'core-response', (evt) =>
         console.log(evt.detail.response);
+      
+      removecm.addEventListener 'core-response', (evt) =>
+        getcms.go()
  
     removerel:  (event) ->
-      removecm = @$.removerel
       removecm.method="POST"
       removecm.withCredentials="true"
       removecm.params='{"COUNCIL_MEMBER_ID":' + @cmid + ',"RELATED_CM_ID":' +  event.currentTarget.id + '}'
       removecm.url="https://query.glgroup.com/councilMember/similarcm/deleteRelationship.mustache"
       removecm.go()
-      removecm.addEventListener 'core-response', (event) =>
-        getcms.go()
 
 
     domReady: ->
