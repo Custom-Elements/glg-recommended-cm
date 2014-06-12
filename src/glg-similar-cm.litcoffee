@@ -2,7 +2,7 @@
 *TODO* tell me all about your element.
 
     _ = require 'lodash'
-    Polymer 'similar-cm',
+    Polymer 'glg-similar-cm',
 
 ##Events
 *TODO* describe the custom event `name` and `detail` that are fired.
