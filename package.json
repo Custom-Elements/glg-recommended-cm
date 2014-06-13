@@ -2,11 +2,13 @@
   "name": "similar-cm",
   "version": "0.0.0",
   "dependencies": {
+    "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
     "lodash": "^2.4.1",
-    "ui-toolkit": "",
+    "polymer": "git://github.com/custom-elements/polymer",
     "polymer-tools": "git://github.com/custom-elements/polymer-tools#master",
     "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
-    "glg-nectar": "git://github.com/Custom-Elements/glg-nectar"
+    "ui-styles": "git://github.com/custom-elements/ui-styles",
+    "ui-typeahead": "git://github.com/custom-elements/ui-typeahead"
   },
   "license": "ISC",
   "scripts": {
