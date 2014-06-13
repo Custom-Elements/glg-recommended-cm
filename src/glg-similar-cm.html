@@ -1,5 +1,6 @@
 <link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
 <link rel="import" href="../node_modules/ui-typeahead/build/ui-typeahead.html" />
+<link rel="import" href="../node_modules/ui-tooltip/build/ui-tooltip.html" />
 <link rel="import" href="../lib/core-ajax.html" />
 <polymer-element name="glg-similar-cm" attributes="limit resultset cmid createdby" >
 <template>
@@ -14,13 +15,22 @@
   resultset="{{resultset}}"
   >
   <core-ajax
+  on-core-response="{{checkperms}}"
   id ="getcms"
   response={{resp}}
   handleAs="json">
   <div id="similarcms">
     <ul>
       <template repeat="{{ item in resp }}">
-        <li>{{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) <a id="{{item.RELATED_CM_ID}}" class="fa fa-times" on-click="{{removerel}}"></a></li>
+        <li>
+          {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) 
+            <ui-tooltip>
+            <a id="{{item.RELATED_CM_ID}}" class="fa fa-times" on-click="{{removerel}}" style="{{displaydel}}"></a>
+              <div tip>
+                Delete this relationship.
+              </div>
+            </ui-tooltip>
+        </li>
       </template>
     </ul>
   </div>
@@ -29,13 +39,14 @@
   on-change="{{addrel}}"
   id="typeahead"
   icon="fa-search"
-  placeholder="Enter stuff">
+  placeholder="Enter Council Member Name">
   <template id="results" repeat="{{resultset}}">
     <template repeat="{{results}}">
       <ui-typeahead-item id={{id}}>
       <i class="fa fa-user {{type}}"></i>
       <strong>{{name}}</strong>
       <span>{{title}}</span>
+      <span>({{company}})</span>
       </ui-typeahead-item>
     </template>
   </template>
@@ -43,10 +54,12 @@
   </glg-nectar>
   <core-ajax id="addcm"
   on-core-response="{{refresh}}"
+  on-core-error="{{handleerr}}"
   handleAs="json">
   </core-ajax>
   <core-ajax id="removecm"
   on-core-response="{{refresh}}"
+  on-core-error="{{handleerr}}"
   handleAs="json">
   </core-ajax>
 </template>

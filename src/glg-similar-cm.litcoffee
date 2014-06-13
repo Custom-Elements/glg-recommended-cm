@@ -29,6 +29,7 @@
       @$.getcms.withCredentials="true"
       @$.getcms.url="https://query.glgroup.com/councilMember/similarcm/getRelationshipsByCMID.mustache"
       @$.getcms.go()
+    
 
     addrel: (evt) ->
       if evt.detail.item && evt.detail.item.selected?
@@ -49,6 +50,20 @@
       @$.removecm.params="{\"COUNCIL_MEMBER_ID\":#{@cmid},\"RELATED_CM_ID\":#{evt.currentTarget.id}}"
       @$.removecm.url="https://query.glgroup.com/councilMember/similarcm/deleteRelationship.mustache"
       @$.removecm.go()
+
+    handleerr: (evt) ->
+      alert "Relationship already exists" if evt.currentTarget.id = "addcm" && evt.detail.response.match("PRIMARY KEY")
+
+    checkperms: (evt) ->
+      @.displaydel= if @createdby == "555" then "" else "display: none"
+      console.log @$.display
+
+    getuser:o
+
+    getCookie: () ->
+      value = "; " + document.cookie
+      parts = value.split("; name =")
+      parts.pop().split(";").shift()  if parts.length is 2
 
     change: (evt) ->
 
