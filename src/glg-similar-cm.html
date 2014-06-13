@@ -1,54 +1,57 @@
 <link rel="import" href="../node_modules/glg-nectar/build/glg-nectar.html" />
 <link rel="import" href="../node_modules/ui-typeahead/build/ui-typeahead.html" />
+<link rel="import" href="../node_modules/ui-progress/build/ui-progress.html" />
 <link rel="import" href="../lib/core-ajax.html" />
-<polymer-element name="glg-similar-cm" attributes="limit resultset cmid createdby" >
+<polymer-element name="glg-similar-cm" attributes="limit resultset cmlist cmid createdby" >
 <template>
   <link rel="stylesheet" href="./glg-similar-cm.less"/>
-  <content></content>
-  <glg-nectar
-  id="nectar"
-  urls='wss://nectar.glgroup.com/ws'
-  entities='["cm", "cm-localized"]'
-  trigger="inputChange"
-  limit="{{limit}}"
-  resultset="{{resultset}}"
-  >
-  <core-ajax
-  id ="getcms"
-  response={{resp}}
-  handleAs="json">
-  <div id="similarcms">
-    <ul>
-      <template repeat="{{ item in resp }}">
-        <li>{{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) <a id="{{item.RELATED_CM_ID}}" class="fa fa-times" on-click="{{removerel}}"></a></li>
+  <ui-progress id="loading"></ui-progress>
+  <section>
+    <glg-nectar
+    id="nectar"
+    urls='wss://nectar.glgroup.com/ws'
+    entities='["cm", "cm-localized"]'
+    trigger="inputChange"
+    limit="{{limit}}"
+    resultset="{{resultset}}"
+    >
+    <core-ajax
+    id ="getcms"
+    response={{cmlist}}
+    handleAs="json">
+    <div id="similarcms">
+      <ul>
+        <template repeat="{{ item in cmlist }}">
+          <li>{{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) <a id="{{item.RELATED_CM_ID}}" class="fa fa-times" on-click="{{removerel}}"></a></li>
+        </template>
+      </ul>
+    </div>
+    </core-ajax>
+    <ui-typeahead
+    on-change="{{addrel}}"
+    id="typeahead"
+    icon="fa-search"
+    placeholder="Enter stuff">
+    <template id="results" repeat="{{resultset}}">
+      <template repeat="{{results}}">
+        <ui-typeahead-item id={{id}}>
+        <i class="fa fa-user {{type}}"></i>
+        <strong>{{name}}</strong>
+        <span>{{title}}</span>
+        </ui-typeahead-item>
       </template>
-    </ul>
-  </div>
-  </core-ajax>
-  <ui-typeahead
-  on-change="{{addrel}}"
-  id="typeahead"
-  icon="fa-search"
-  placeholder="Enter stuff">
-  <template id="results" repeat="{{resultset}}">
-    <template repeat="{{results}}">
-      <ui-typeahead-item id={{id}}>
-      <i class="fa fa-user {{type}}"></i>
-      <strong>{{name}}</strong>
-      <span>{{title}}</span>
-      </ui-typeahead-item>
     </template>
-  </template>
-  </ui-typeahead>
-  </glg-nectar>
-  <core-ajax id="addcm"
-  on-core-response="{{refresh}}"
-  handleAs="json">
-  </core-ajax>
-  <core-ajax id="removecm"
-  on-core-response="{{refresh}}"
-  handleAs="json">
-  </core-ajax>
+    </ui-typeahead>
+    </glg-nectar>
+    <core-ajax id="addcm"
+    on-core-response="{{refresh}}"
+    handleAs="json">
+    </core-ajax>
+    <core-ajax id="removecm"
+    on-core-response="{{refresh}}"
+    handleAs="json">
+    </core-ajax>
+  </section>
 </template>
 <script src="./glg-similar-cm.litcoffee"></script>
 </polymer-element>

@@ -7,6 +7,7 @@
     "polymer": "git://github.com/custom-elements/polymer",
     "polymer-tools": "git://github.com/custom-elements/polymer-tools#master",
     "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
+    "ui-progress": "git://github.com/custom-elements/ui-progress",
     "ui-styles": "git://github.com/custom-elements/ui-styles",
     "ui-typeahead": "git://github.com/custom-elements/ui-typeahead"
   },

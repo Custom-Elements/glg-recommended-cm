@@ -1,27 +1,34 @@
 #similar-cm
-*TODO* tell me all about your element.
+Query for council members, and store them as a managed list.
 
     _ = require 'lodash'
     Polymer 'glg-similar-cm',
 
-##Events
-*TODO* describe the custom event `name` and `detail` that are fired.
-
 ##Attributes and Change Handlers
+#
+###cmid
+Store the list linkage for this council member.
+
+###createdby
+This is our employee that is currently editing.
+
+###cmlist
+These are the stored linkages, bound and shown on the UI.
+
+    cmlistChanged: ->
+      @$.loading.stop()
+
+###limit
+Number of name matches to show in the typeahead.
+
+##resultset
+Data binding buffer for name matches in the typeahead, hooked up to
+[nectar](https://github.com/glg/nectar).
+
+    resultsetChanged: ->
+      @$.loading.stop()
+
 ##Methods
-
-##Event Handlers
-    onChange: (evt) ->
-      alert evt
-
-##Polymer Lifecycle
-
-    created: ->
-
-    ready: ->
-
-    attached: ->
-      @refresh()
 
     refresh: ->
       @$.getcms.method="POST"
@@ -29,6 +36,7 @@
       @$.getcms.withCredentials="true"
       @$.getcms.url="https://query.glgroup.com/councilMember/similarcm/getRelationshipsByCMID.mustache"
       @$.getcms.go()
+      @$.loading.start()
 
     addrel: (evt) ->
       if evt.detail.item && evt.detail.item.selected?
@@ -37,6 +45,7 @@
         @$.addcm.params="{\"COUNCIL_MEMBER_ID\":#{@cmid},\"RELATED_CM_ID\":#{evt.detail.item.id}, \"CREATED_BY\":#{@createdby}}"
         @$.addcm.url="https://query.glgroup.com/councilMember/similarcm/addRelationship.mustache"
         @$.addcm.go()
+        @$.loading.start()
         foo =
           detail:
             value:""
@@ -49,8 +58,20 @@
       @$.removecm.params="{\"COUNCIL_MEMBER_ID\":#{@cmid},\"RELATED_CM_ID\":#{evt.currentTarget.id}}"
       @$.removecm.url="https://query.glgroup.com/councilMember/similarcm/deleteRelationship.mustache"
       @$.removecm.go()
+      @$.loading.start()
 
-    change: (evt) ->
+##Event Handlers
+
+##Polymer Lifecycle
+
+    created: ->
+
+    ready: ->
+
+    attached: ->
+      @refresh()
+      @addEventListener 'nectarQuery', =>
+        @$.loading.start()
 
     domReady: ->
 
