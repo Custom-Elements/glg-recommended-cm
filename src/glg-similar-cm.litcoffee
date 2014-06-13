@@ -65,7 +65,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
       alert "Relationship already exists" if evt.currentTarget.id = "addcm" && evt.detail.response.match("PRIMARY KEY")
 
     checkperms: (evt) ->
-      @.displaydel= if @createdby == "555" then "" else "display: none"
+      @.displaydel= if @createdby == "5555" then "" else "display: none"
       console.log @$.display
 
     getCookie: () ->
