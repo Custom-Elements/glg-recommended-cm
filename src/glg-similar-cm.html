@@ -17,7 +17,6 @@
   resultset="{{resultset}}"
   >
   <core-ajax
-  on-core-response="{{checkperms}}"
   id ="getcms"
   response={{cmlist}}
   handleAs="json">
@@ -27,7 +26,7 @@
       <li>
       {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) 
       <ui-tooltip>
-      <a id="{{item.RELATED_CM_ID}}" class="fa fa-times" on-click="{{removerel}}" style="{{displaydel}}"></a>
+      <a id="{{item.RELATED_CM_ID}}" class="fa fa-times" on-click="{{removerel}}" style="{{admin}}"></a>
       <div tip>
         Delete this relationship.
       </div>
@@ -39,6 +38,7 @@
   </core-ajax>
   <ui-typeahead
   on-change="{{addrel}}"
+  style="{{admin}}"
   id="typeahead"
   icon="fa-search"
   placeholder="Enter stuff">
@@ -61,6 +61,11 @@
   <core-ajax id="removecm"
   on-core-response="{{refresh}}"
   on-core-error="{{handleerr}}"
+  handleAs="json">
+  </core-ajax>
+  <core-ajax id="betalist"
+  withCredentials="true"
+  url="//kvstore.glgroup.com/kv/bmp_data"
   handleAs="json">
   </core-ajax>
 </section>

@@ -59,19 +59,37 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @$.removecm.url="https://query.glgroup.com/councilMember/similarcm/deleteRelationship.mustache"
       @$.removecm.go()
       @$.loading.start()
+    
+    getCookie: () ->
+      value = "; " + document.cookie
+      parts = value.split("; glgSAM =")
+      parts.pop().split(";").shift()  if parts.length is 2 
+
+    getBetaUsers: () ->
+      @$.betalist.go()
 
 ##Event Handlers
     handleerr: (evt) ->
       alert "Relationship already exists" if evt.currentTarget.id = "addcm" && evt.detail.response.match("PRIMARY KEY")
+    
 
     checkperms: (evt) ->
-      @.displaydel= if @createdby == "5555" then "" else "display: none"
-      console.log @$.display
-
-    getCookie: () ->
-      value = "; " + document.cookie
-      parts = value.split("; name =")
-      parts.pop().split(";").shift()  if parts.length is 2
+      if window.location.hostname  == 'glgroup.com'
+        betausers = @getBetaUsers()
+        user = @getCookie()
+        group = $.grep(betausers.groups, (e) ->
+            e.name is 'similar_cm_admin'
+        )
+        if group.length and group[0].users.length > 1
+          user = $.grep(group[0].users, (e) ->
+            e is username[0].toLowerCase()
+            )
+          if username[0].toLowerCase() and user[0] is username[0].toLowerCase()
+            @.admin = "display: none"
+          else
+            @.admin = ""
+      else
+        @.displaydel= ""
 
     change: (evt) ->
 
@@ -83,6 +101,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
 
     attached: ->
       @refresh()
+      @checkperms()
       @addEventListener 'nectarQuery', =>
         @$.loading.start()
 
