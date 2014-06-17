@@ -1,5 +1,5 @@
 {
-  "name": "similar-cm",
+  "name": "glg-similar-cm",
   "version": "0.0.0",
   "dependencies": {
     "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
