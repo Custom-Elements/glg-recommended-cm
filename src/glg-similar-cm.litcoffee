@@ -62,7 +62,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
     
     getCookie: () ->
       value = "; " + document.cookie
-      parts = value.split("; glgSAM =")
+      parts = value.split("; glgSAM=")
       if parts.length is 2 then parts.pop().split(";").shift() else ''
 
 
