@@ -63,11 +63,13 @@ Data binding buffer for name matches in the typeahead, hooked up to
     getCookie: () ->
       value = "; " + document.cookie
       parts = value.split("; glgSAM =")
-      parts.pop().split(";").shift()  if parts.length is 2 
+      if parts.length is 2 then parts.pop().split(";").shift() else 'mhuggins'
+
 
     getBetaUsers: () ->
       @$.betalist.url="https://kvstore.glgroup.com/kv/bmp_data?callback="
       @$.betalist.go()
+
 
 ##Event Handlers
     handleerr: (evt) ->
@@ -76,22 +78,25 @@ Data binding buffer for name matches in the typeahead, hooked up to
 
     checkperms: (evt) ->
       if window.location.hostname.match('localhost')? &&  window.location.hostname.match('localhost').length > 0
-        betausers = @getBetaUsers()
-        console.log(betausers)
-        user = @getCookie()
-        group = $.grep(betausers.groups, (e) ->
-            e.name is 'similar_cm_admin'
-        )
-        if group.length and group[0].users.length > 1
-          user = $.grep(group[0].users, (e) ->
-            e is username[0].toLowerCase()
-            )
-          if username[0].toLowerCase() and user[0] is username[0].toLowerCase()
-            @.admin = "display: none"
-          else
-            @.admin = ""
+        @getBetaUsers()
       else
         @.admin = ""
+    
+    getbetagroup: (evt) ->
+      console.log("in getbetagroup")
+      group = evt.detail.response.groups.filter (word) ->
+        'similar_cm_admin'.indexOf(word.name) isnt -1
+      user = @getCookie()
+      debugger;
+
+      if group.length and group[0].users.length > 1
+        user = $.grep(group[0].users, (e) ->
+          e is username[0].toLowerCase()
+          )
+        if username[0].toLowerCase() and user[0] is username[0].toLowerCase()
+          @.admin = "display: none"
+        else
+          @.admin = ""
 
     change: (evt) ->
 
