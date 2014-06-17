@@ -63,7 +63,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
     getCookie: () ->
       value = "; " + document.cookie
       parts = value.split("; glgSAM =")
-      if parts.length is 2 then parts.pop().split(";").shift() else 'mhuggins'
+      if parts.length is 2 then parts.pop().split(";").shift() else ''
 
 
     getBetaUsers: () ->
@@ -77,7 +77,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
     
 
     checkperms: (evt) ->
-      if window.location.hostname.match('localhost')? &&  window.location.hostname.match('localhost').length > 0
+      if window.location.hostname.match('glgroup.com')? &&  window.location.hostname.match('glgroup.com').length > 0
         @getBetaUsers()
       else
         @.admin = ""
@@ -86,17 +86,16 @@ Data binding buffer for name matches in the typeahead, hooked up to
       console.log("in getbetagroup")
       group = evt.detail.response.groups.filter (word) ->
         'similar_cm_admin'.indexOf(word.name) isnt -1
-      user = @getCookie()
-      debugger;
+      username = @getCookie()
 
-      if group.length and group[0].users.length > 1
-        user = $.grep(group[0].users, (e) ->
-          e is username[0].toLowerCase()
-          )
-        if username[0].toLowerCase() and user[0] is username[0].toLowerCase()
-          @.admin = "display: none"
-        else
+      if group.length and group[0].users.length > 0
+        betauser = group[0].users.filter (user) ->
+         user.indexOf(username) isnt -1 
+
+        if betauser.length > 0 and username.toLowerCase() is betauser[0].toLowerCase()
           @.admin = ""
+        else
+          @.admin = "display: none"
 
     change: (evt) ->
 
