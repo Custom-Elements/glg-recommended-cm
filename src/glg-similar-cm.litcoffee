@@ -89,7 +89,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
           else
             @.admin = ""
       else
-        @.displaydel= ""
+        @.admin = ""
 
     change: (evt) ->
 
