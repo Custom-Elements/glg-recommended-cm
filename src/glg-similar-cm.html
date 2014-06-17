@@ -3,6 +3,7 @@
 <link rel="import" href="../node_modules/ui-tooltip/build/ui-tooltip.html" />
 <link rel="import" href="../node_modules/ui-progress/build/ui-progress.html" />
 <link rel="import" href="../lib/core-ajax.html" />
+<link rel="import" href="../lib/polymer-jsonp.html" />
 <polymer-element name="glg-similar-cm" attributes="limit resultset cmlist cmid createdby" >
 <template>
 <link rel="stylesheet" href="./glg-similar-cm.less"/>
@@ -63,11 +64,9 @@
   on-core-error="{{handleerr}}"
   handleAs="json">
   </core-ajax>
-  <core-ajax id="betalist"
-  withCredentials="true"
-  url="//kvstore.glgroup.com/kv/bmp_data"
+  <polymer-jsonp id="betalist"
   handleAs="json">
-  </core-ajax>
+  </polymer-jsonp>
 </section>
 </template>
 <script src="./glg-similar-cm.litcoffee"></script>

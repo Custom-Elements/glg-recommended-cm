@@ -66,6 +66,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
       parts.pop().split(";").shift()  if parts.length is 2 
 
     getBetaUsers: () ->
+      @$.betalist.url="https://kvstore.glgroup.com/kv/bmp_data?callback="
       @$.betalist.go()
 
 ##Event Handlers
@@ -74,8 +75,9 @@ Data binding buffer for name matches in the typeahead, hooked up to
     
 
     checkperms: (evt) ->
-      if window.location.hostname  == 'glgroup.com'
+      if window.location.hostname.match('localhost')? &&  window.location.hostname.match('localhost').length > 0
         betausers = @getBetaUsers()
+        console.log(betausers)
         user = @getCookie()
         group = $.grep(betausers.groups, (e) ->
             e.name is 'similar_cm_admin'
