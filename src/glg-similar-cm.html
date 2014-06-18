@@ -25,16 +25,25 @@
     <ul>
       <template repeat="{{ item in cmlist }}">
       <li>
-        <a href="https://advisors.glgroup.com/cm/{{item.RELATED_CM_ID}}">
-          {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}}
-        </a>
-        {{item.TITLE}} ({{item.COMPANY}})
-      <ui-tooltip>
-      <a id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}" style="{{admin}}"></a>
-      <div tip>
-        Delete this relationship.
-      </div>
-      </ui-tooltip>
+        <div class="cmlink">
+          <a href="https://advisors.glgroup.com/cm/{{item.RELATED_CM_ID}}">
+            {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}}
+          </a>
+        </div>
+        <div class="rate">
+          ${{item.ConsultingRate}}
+        </div>
+        <div class="employment">
+          {{item.TITLE}} ({{item.COMPANY}})
+        </div>
+        <div class="tip">
+          <ui-tooltip>
+            <a id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}" style="{{admin}}"></a>
+            <div tip>
+              Delete this relationship.
+            </div>
+          </ui-tooltip>
+        </div>
       </li>
       </template>
     </ul>

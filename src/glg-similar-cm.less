@@ -2,6 +2,8 @@
 @import "../node_modules/ui-styles/variables";
 @import "../node_modules/ui-styles/typography";
 
+@line_display: inline-block;
+
 :host {
   display: block;
 }
@@ -11,6 +13,7 @@ ui-typeahead {
 }
 
 #similarcms {
+  font-size: x-small;
   display: block;
   width: 100%;
 }
@@ -21,4 +24,26 @@ a{
 
 a.delete{
   color: red
+}
+
+div.cmlink{
+  display: @line_display;
+  width: 13em;
+  padding-bottom: 3px;
+}
+
+div.rate{
+  display: @line_display;
+  width: 3em;
+  padding-bottom: 3px;
+}
+
+div.employment{
+  display: @line_display;
+  width: 35em;
+}
+
+div.tip{
+  display: @line_display;
+  width: 1em;
 }
