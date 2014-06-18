@@ -25,9 +25,12 @@
     <ul>
       <template repeat="{{ item in cmlist }}">
       <li>
-      {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}} {{item.TITLE}} ({{item.COMPANY}}) 
+        <a href="https://advisors.glgroup.com/cm/{{item.RELATED_CM_ID}}">
+          {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}}
+        </a>
+        {{item.TITLE}} ({{item.COMPANY}})
       <ui-tooltip>
-      <a id="{{item.RELATED_CM_ID}}" class="fa fa-times" on-click="{{removerel}}" style="{{admin}}"></a>
+      <a id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}" style="{{admin}}"></a>
       <div tip>
         Delete this relationship.
       </div>
