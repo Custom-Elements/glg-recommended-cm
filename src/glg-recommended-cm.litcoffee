@@ -1,8 +1,8 @@
-#similar-cm
+#recommended-cm
 Query for council members, and store them as a managed list.
 
     _ = require 'lodash'
-    Polymer 'glg-similar-cm',
+    Polymer 'glg-recommended-cm',
 
 ##Attributes and Change Handlers
 #
@@ -34,7 +34,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @$.getcms.method="POST"
       @$.getcms.params="{\"COUNCIL_MEMBER_ID\":#{@cmid}}"
       @$.getcms.withCredentials="true"
-      @$.getcms.url="https://query.glgroup.com/councilMember/similarcm/getRelationshipsByCMID.mustache"
+      @$.getcms.url="https://query.glgroup.com/councilMember/recommendedcm/getRelationshipsByCMID.mustache"
       @$.getcms.go()
       @$.loading.start()
 
@@ -43,7 +43,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
         @$.addcm.method="POST"
         @$.addcm.withCredentials="true"
         @$.addcm.params="{\"COUNCIL_MEMBER_ID\":#{@cmid},\"RELATED_CM_ID\":#{evt.detail.item.id}, \"CREATED_BY\":#{@createdby}}"
-        @$.addcm.url="https://query.glgroup.com/councilMember/similarcm/addRelationship.mustache"
+        @$.addcm.url="https://query.glgroup.com/councilMember/recommendedcm/addRelationship.mustache"
         @$.addcm.go()
         @$.loading.start()
         foo =
@@ -56,7 +56,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @$.removecm.method="POST"
       @$.removecm.withCredentials="true"
       @$.removecm.params="{\"COUNCIL_MEMBER_ID\":#{@cmid},\"RELATED_CM_ID\":#{evt.currentTarget.id}}"
-      @$.removecm.url="https://query.glgroup.com/councilMember/similarcm/deleteRelationship.mustache"
+      @$.removecm.url="https://query.glgroup.com/councilMember/recommendedcm/deleteRelationship.mustache"
       @$.removecm.go()
       @$.loading.start()
     
@@ -85,7 +85,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
     getbetagroup: (evt) ->
       console.log("in getbetagroup")
       group = evt.detail.response.groups.filter (word) ->
-        'similar_cm_admin'.indexOf(word.name) isnt -1
+        'recommended_cm_admin'.indexOf(word.name) isnt -1
       username = @getCookie()
 
       if group.length and group[0].users.length > 0

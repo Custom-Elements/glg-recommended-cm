@@ -4,9 +4,9 @@
 <link rel="import" href="../node_modules/ui-progress/build/ui-progress.html" />
 <link rel="import" href="../lib/core-ajax.html" />
 <link rel="import" href="../lib/polymer-jsonp.html" />
-<polymer-element name="glg-similar-cm" attributes="limit resultset cmlist cmid createdby" >
+<polymer-element name="glg-recommended-cm" attributes="limit resultset cmlist cmid createdby" >
 <template>
-<link rel="stylesheet" href="./glg-similar-cm.less"/>
+<link rel="stylesheet" href="./glg-recommended-cm.less"/>
 <ui-progress id="loading"></ui-progress>
 <section>
   <glg-nectar
@@ -21,7 +21,7 @@
   id ="getcms"
   response={{cmlist}}
   handleAs="json">
-  <div id="similarcms">
+  <div id="recommendedcms">
     <ul>
       <template repeat="{{ item in cmlist }}">
       <li>
@@ -81,5 +81,5 @@
   </polymer-jsonp>
 </section>
 </template>
-<script src="./glg-similar-cm.litcoffee"></script>
+<script src="./glg-recommended-cm.litcoffee"></script>
 </polymer-element>
