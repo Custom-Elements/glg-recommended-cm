@@ -13,9 +13,15 @@ ui-typeahead {
 }
 
 #recommendedcms {
-  font-size: x-small;
+  font-size: small;
   display: block;
   width: 100%;
+}
+
+#cm {
+  display: -webkit-flex;
+  flex-flow: row wrap;
+  display: flex;
 }
 
 a{
@@ -23,28 +29,31 @@ a{
 }
 
 a.delete{
-  color: red
+  color: red;
 }
 
 div.cmlink{
-  display: @line_display;
-  width: 13em;
-  padding-bottom: 3px;
+  margin: auto;
+  flex: 2;
 }
 
 div.rate{
-  display: @line_display;
   width: 3em;
-  padding-bottom: 3px;
+  margin: auto;
+  flex: none;
 }
 
 div.employment{
-  display: @line_display;
   width: 35em;
+  margin: auto;
+  flex: 1 100%;
 }
 
 div.tip{
+  min-width: 1em;
+  max-width: 2em;
+  flex: initial;
+  margin: auto;
   display: @line_display;
-  width: 1em;
 }
 
