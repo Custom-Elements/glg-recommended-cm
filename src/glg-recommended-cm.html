@@ -26,9 +26,9 @@
       <template repeat="{{ item in cmlist }}">
       <li>
         <div id="cm">
-          <div class="tip">
+          <div class="tip" style="{{admin}}">
             <ui-tooltip>
-              <a id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}" style="{{admin}}"></a>
+              <a id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}"></a>
               <div tip>
                 Delete this relationship.
               </div>
