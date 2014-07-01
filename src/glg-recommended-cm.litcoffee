@@ -12,11 +12,13 @@ Store the list linkage for this council member.
 ###createdby
 This is our employee that is currently editing.
 
+
 ###cmlist
 These are the stored linkages, bound and shown on the UI.
 
     cmlistChanged: ->
       @$.loading.stop()
+      console.log("cmlistchanged called stop")
 
 ###limit
 Number of name matches to show in the typeahead.
@@ -27,6 +29,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
 
     resultsetChanged: ->
       @$.loading.stop()
+      console.log("resultsetChanged called stop")
 
 ##Methods
 
@@ -37,6 +40,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @$.getcms.url="https://query.glgroup.com/councilMember/recommendedcm/getRelationshipsByCMID.mustache"
       @$.getcms.go()
       @$.loading.start()
+      console.log("refresh called start")
 
     addrel: (evt) ->
       if evt.detail.item && evt.detail.item.selected?
@@ -46,6 +50,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
         @$.addcm.url="https://query.glgroup.com/councilMember/recommendedcm/addRelationship.mustache"
         @$.addcm.go()
         @$.loading.start()
+        console.log("addrel called start")
         foo =
           detail:
             value:""
@@ -59,6 +64,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @$.removecm.url="https://query.glgroup.com/councilMember/recommendedcm/deleteRelationship.mustache"
       @$.removecm.go()
       @$.loading.start()
+      console.log("remove rel called start")
     
     getCookie: () ->
       value = "; " + document.cookie
@@ -96,6 +102,8 @@ Data binding buffer for name matches in the typeahead, hooked up to
           @.admin = ""
         else
           @.admin = "display: none"
+      else
+          @.admin = "display: none"
 
     change: (evt) ->
 
@@ -110,6 +118,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @checkperms()
       @addEventListener 'nectarQuery', =>
         @$.loading.start()
+        console.log("nectraQuery called start")
 
     domReady: ->
 
