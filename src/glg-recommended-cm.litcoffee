@@ -18,7 +18,6 @@ These are the stored linkages, bound and shown on the UI.
 
     cmlistChanged: ->
       @$.loading.stop()
-      console.log("cmlistchanged called stop")
 
 ###limit
 Number of name matches to show in the typeahead.
@@ -29,7 +28,6 @@ Data binding buffer for name matches in the typeahead, hooked up to
 
     resultsetChanged: ->
       @$.loading.stop()
-      console.log("resultsetChanged called stop")
 
 ##Methods
 
@@ -114,7 +112,7 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @refresh()
       @checkperms()
       @addEventListener 'nectarQuery', =>
-        @$.loading.start()
+       ## @$.loading.start()
 
     ready: ->
 
