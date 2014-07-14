@@ -1,6 +1,7 @@
 {
   "name": "glg-recommended-cm",
   "version": "0.0.0",
+  "//":"Locking ui-typeahed down to specific commit so app doesn't break with pending refactors need to fix at some point",
   "dependencies": {
     "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
     "lodash": "^2.4.1",
@@ -9,7 +10,7 @@
     "ui-fonts": "git://github.com/custom-elements/ui-fonts#master",
     "ui-progress": "git://github.com/custom-elements/ui-progress",
     "ui-styles": "git://github.com/custom-elements/ui-styles",
-    "ui-typeahead": "git://github.com/custom-elements/ui-typeahead",
+    "ui-typeahead": "git://github.com/custom-elements/ui-typeahead#4a3c3f777fac16e13", 
     "ui-tooltip": "git://github.com/custom-elements/ui-tooltip"
   },
   "license": "ISC",
