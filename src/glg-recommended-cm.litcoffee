@@ -60,45 +60,10 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @$.removecm.url="https://query.glgroup.com/councilMember/recommendedcm/deleteRelationship.mustache"
       @$.removecm.go()
       @$.loading.start()
-    
-    getCookie: () ->
-      value = "; " + document.cookie
-      parts = value.split("; glgSAM=")
-      if parts.length is 2 then parts.pop().split(";").shift() else ''
-
-
-    getBetaUsers: () ->
-      @$.betalist.url="https://kvstore.glgroup.com/kv/bmp_data?callback="
-      @$.betalist.go()
-
 
 ##Event Handlers
     handleerr: (evt) ->
       alert "Relationship already exists" if evt.currentTarget.id = "addcm" && evt.detail.response.match("PRIMARY KEY")
-    
-
-    checkperms: (evt) ->
-      if window.location.hostname.match('glgroup.com')? &&  window.location.hostname.match('glgroup.com').length > 0
-        @getBetaUsers()
-      else
-        @.admin = ""
-    
-    getbetagroup: (evt) ->
-      console.log("in getbetagroup")
-      group = evt.detail.response.groups.filter (word) ->
-        'recommended_cm_admin'.indexOf(word.name) isnt -1
-      username = @getCookie()
-
-      if group.length and group[0].users.length > 0
-        betauser = group[0].users.filter (user) ->
-         user.indexOf(username) isnt -1 
-
-        if betauser.length > 0 and username.toLowerCase() is betauser[0].toLowerCase()
-          @.admin = ""
-        else
-          @.admin = "display: none"
-      else
-          @.admin = "display: none"
 
     change: (evt) ->
 
@@ -110,7 +75,6 @@ Data binding buffer for name matches in the typeahead, hooked up to
 
     attached: ->
       @refresh()
-      @checkperms()
       @addEventListener 'nectarQuery', =>
        ## @$.loading.start()
 
