@@ -2,6 +2,7 @@
 <link rel="import" href="../node_modules/ui-typeahead/src/ui-typeahead.html" />
 <link rel="import" href="../node_modules/ui-tooltip/src/ui-tooltip.html" />
 <link rel="import" href="../node_modules/ui-progress/src/ui-progress.html" />
+<link rel="import" href="../node_modules/glg-betagroup/src/glg-betagroup.html" />
 <link rel="import" href="../lib/core-ajax.html" />
 <link rel="import" href="../lib/polymer-jsonp.html" />
 <polymer-element name="glg-recommended-cm" attributes="limit resultset cmlist cmid createdby" >
@@ -26,14 +27,16 @@
       <template repeat="{{ item in cmlist }}">
       <li>
         <div id="cm">
-          <div class="tip" style="{{admin}}">
-            <ui-tooltip>
-            <a id="{{item.RELATED_CM_ID}}" class="delete" on-click="{{removerel}}"> <icon times/></a>
-              <div tip>
-                Delete this relationship.
-              </div>
-            </ui-tooltip>
-          </div>
+          <glg-betagroup betagroup="recommended_cm_admin">
+            <div class="tip">
+              <ui-tooltip>
+              <a id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}"></a>
+                <div tip>
+                  Delete this relationship.
+                </div>
+              </ui-tooltip>
+            </div>
+          </glg-betagroup>
           <div class="cmlink">
             <a href="https://advisors.glgroup.com/cm/{{item.RELATED_CM_ID}}" target="_blank">
               {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}}
@@ -51,22 +54,22 @@
     </ul>
   </div>
   </core-ajax>
-  <ui-typeahead
-  on-change="{{addrel}}"
-  style="{{admin}}"
-  id="typeahead"
-  icon="fa-search"
-  placeholder="Search for Council Members">
-  <template id="results" repeat="{{resultset}}">
-  <template repeat="{{results}}">
-  <ui-typeahead-item id={{id}}>
-  <i class="fa fa-user {{type}}"></i>
-  <strong>{{name}}</strong>
-  <span>{{title}}</span>
-  </ui-typeahead-item>
-  </template>
-
-  </ui-typeahead>
+ <glg-betagroup betagroup="recommended_cm_admin">
+    <ui-typeahead
+    on-change="{{addrel}}"
+    id="typeahead"
+    icon="fa-search"
+    placeholder="Search for Council Members">
+    <template id="results" repeat="{{resultset}}">
+    <template repeat="{{results}}">
+    <ui-typeahead-item id={{id}}>
+    <i class="fa fa-user {{type}}"></i>
+    <strong>{{name}}</strong>
+    <span>{{title}}</span>
+    </ui-typeahead-item>
+    </template>
+    </ui-typeahead>
+</glg-betagroup>
   </glg-nectar>
   <core-ajax id="addcm"
   on-core-response="{{refresh}}"
