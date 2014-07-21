@@ -72,11 +72,11 @@ Data binding buffer for name matches in the typeahead, hooked up to
     created: ->
 
     domReady: ->
-
-    attached: ->
       @refresh()
       @addEventListener 'nectarQuery', =>
        ## @$.loading.start()
+
+    attached: ->
 
     ready: ->
 
