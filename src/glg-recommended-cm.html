@@ -8,7 +8,7 @@
 <template>
 <link rel="stylesheet" href="./glg-recommended-cm.less"/>
 <ui-progress id="loading"></ui-progress>
-<section>
+<section on-nectarQuery="{{loading}}" on-results="{{loaded}}" on-go="{{loading}}" on-core-complete="{{loaded}}">
   <glg-nectar
   id="nectar"
   urls='wss://nectar.glgroup.com/ws'
