@@ -34,10 +34,10 @@ Data binding buffer for name matches in the typeahead, hooked up to
       @$.getcms.go()
 
     addrel: (evt) ->
-      if evt.detail.item && evt.detail.item.selected?
+      if evt.detail.id
         @$.addcm.method="POST"
         @$.addcm.withCredentials="true"
-        @$.addcm.params="{\"COUNCIL_MEMBER_ID\":#{@cmid},\"RELATED_CM_ID\":#{evt.detail.item.id}, \"CREATED_BY\":#{@createdby}}"
+        @$.addcm.params="{\"COUNCIL_MEMBER_ID\":#{@cmid},\"RELATED_CM_ID\":#{evt.detail.id}, \"CREATED_BY\":#{@createdby}}"
         @$.addcm.url="https://query.glgroup.com/councilMember/recommendedcm/addRelationship.mustache"
         @$.addcm.go()
 

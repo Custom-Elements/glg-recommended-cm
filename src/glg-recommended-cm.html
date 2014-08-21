@@ -29,7 +29,7 @@
           <glg-betagroup betagroup="recommended_cm_admin">
             <div class="tip">
               <ui-tooltip>
-              <a id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}"></a>
+              <icon clickable times id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}"></icon>
                 <div tip>
                   Delete this relationship.
                 </div>
@@ -57,14 +57,13 @@
     <ui-typeahead
     on-change="{{addrel}}"
     id="typeahead"
-    icon="fa-search"
     placeholder="Search for Council Members">
+    <icon search></icon>
     <template id="results" repeat="{{resultset}}">
     <template repeat="{{results}}">
     <ui-typeahead-item id={{id}}>
-    <i class="fa fa-user {{type}}"></i>
     <strong>{{name}}</strong>
-    <span>{{title}}</span>
+    <span class="title">{{title}}</span>
     </ui-typeahead-item>
     </template>
     </ui-typeahead>

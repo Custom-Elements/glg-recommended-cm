@@ -7,10 +7,10 @@
     "lodash": "^2.4.1",
     "polymer": "git://github.com/custom-elements/polymer",
     "polymer-tools": "git://github.com/custom-elements/polymer-tools#master",
-    "ui-fonts": "git://github.com/custom-elements/ui-fonts#27e5c27dd6ea15",
+    "ui-fonts": "git://github.com/custom-elements/ui-fonts",
     "ui-progress": "git://github.com/custom-elements/ui-progress",
     "ui-styles": "git://github.com/custom-elements/ui-styles",
-    "ui-typeahead": "git://github.com/custom-elements/ui-typeahead#92af534f2c3cbe9", 
+    "ui-typeahead": "git://github.com/custom-elements/ui-typeahead",
     "ui-tooltip": "git://github.com/custom-elements/ui-tooltip",
     "glg-betagroup": "git://github.com/custom-elements/glg-betagroup"
   },
