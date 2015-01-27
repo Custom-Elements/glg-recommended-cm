@@ -1,12 +1,10 @@
 {
   "name": "glg-recommended-cm",
   "version": "0.0.0",
-  "//":"Locking ui-typeahed down to specific commit so app doesn't break with pending refactors need to fix at some point",
   "dependencies": {
     "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
-    "lodash": "^2.4.1",
     "polymer": "git://github.com/custom-elements/polymer",
-    "polymer-tools": "git://github.com/custom-elements/polymer-tools#master",
+    "polymer-serve": "git://github.com/custom-elements/polymer-serve",
     "ui-fonts": "git://github.com/custom-elements/ui-fonts",
     "ui-progress": "git://github.com/custom-elements/ui-progress",
     "ui-styles": "git://github.com/custom-elements/ui-styles",
@@ -16,6 +14,6 @@
   },
   "license": "ISC",
   "scripts": {
-    "test": "polymer-build watch . src/ build/"
+    "test": "polymer-serve ."
   }
 }

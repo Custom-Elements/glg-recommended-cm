@@ -4,82 +4,86 @@
 <link rel="import" href="../node_modules/ui-progress/src/ui-progress.html" />
 <link rel="import" href="../node_modules/glg-betagroup/src/glg-betagroup.html" />
 <link rel="import" href="../lib/core-ajax.html" />
+
 <polymer-element name="glg-recommended-cm" attributes="limit resultset cmlist cmid createdby" >
-<template>
-<link rel="stylesheet" href="./glg-recommended-cm.less"/>
-<ui-progress id="loading"></ui-progress>
-<section on-nectarQuery="{{loading}}" on-results="{{loaded}}" on-go="{{loading}}" on-core-complete="{{loaded}}">
-  <glg-nectar
-  id="nectar"
-  urls='wss://nectar.glgroup.com/ws'
-  entities='["cm", "cm-localized"]'
-  trigger="inputchange"
-  limit="{{limit}}"
-  resultset="{{resultset}}"
-  >
-  <core-ajax
-  id ="getcms"
-  response={{cmlist}}
-  handleAs="json">
-  <div id="recommendedcms">
-    <ul>
-      <template repeat="{{ item in cmlist }}">
-      <li>
-        <div id="cm">
-          <glg-betagroup betagroup="recommended_cm_admin">
-            <div class="tip">
-              <ui-tooltip>
-              <icon clickable times id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}"></icon>
-                <div tip>
-                  Delete this relationship.
+  <template>
+    <link rel="stylesheet" href="./glg-recommended-cm.less"/>
+
+    <ui-progress id="loading"></ui-progress>
+
+    <section on-nectarQuery="{{loading}}" on-results="{{loaded}}" on-go="{{loading}}" on-core-complete="{{loaded}}">
+
+      <glg-nectar id="nectar" urls='wss://nectar.glgroup.com/ws' entities='["cm", "cm-localized"]' trigger="inputchange" limit="{{limit}}" resultset="{{resultset}}">
+
+        <core-ajax id ="getcms" response={{cmlist}} handleAs="json"></core-ajax>
+
+        <div id="recommendedcms">
+          <ul>
+            <template repeat="{{ item in cmlist }}">
+            <li>
+              <div id="cm">
+                <glg-betagroup betagroup="recommended_cm_admin">
+                  <div class="tip">
+                    <ui-tooltip>
+                    <icon clickable times id="{{item.RELATED_CM_ID}}" class="delete fa fa-times" on-click="{{removerel}}"></icon>
+                      <div tip>
+                        Delete this relationship.
+                      </div>
+                    </ui-tooltip>
+                  </div>
+                </glg-betagroup>
+                <div class="cmlink">
+                  <a href="https://advisors.glgroup.com/cm/{{item.RELATED_CM_ID}}" target="_blank">
+                    {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}}
+                  </a>
                 </div>
-              </ui-tooltip>
-            </div>
-          </glg-betagroup>
-          <div class="cmlink">
-            <a href="https://advisors.glgroup.com/cm/{{item.RELATED_CM_ID}}" target="_blank">
-              {{item.FIRST_NAME}} {{item.MIDDLE_INITIAL}} {{item.LAST_NAME}}
-            </a>
-          </div>
-          <div class="rate">
-            ${{item.ConsultingRate}}
-          </div>
-          <div class="employment">
-            {{item.TITLE}} ({{item.COMPANY}})
-          </div>
+                <div class="rate">
+                  ${{item.ConsultingRate}}
+                </div>
+                <div class="employment">
+                  {{item.TITLE}} ({{item.COMPANY}})
+                </div>
+              </div>
+            </li>
+            </template>
+          </ul>
         </div>
-      </li>
-      </template>
-    </ul>
-  </div>
-  </core-ajax>
- <glg-betagroup betagroup="recommended_cm_admin">
-    <ui-typeahead
-    on-change="{{addrel}}"
-    id="typeahead"
-    placeholder="Search for Council Members">
-    <icon search></icon>
-    <template id="results" repeat="{{resultset}}">
-    <template repeat="{{results}}">
-    <ui-typeahead-item id={{id}}>
-    <strong>{{name}}</strong>
-    <span class="title">{{company}}</span>
-    </ui-typeahead-item>
-    </template>
-    </ui-typeahead>
-</glg-betagroup>
-  </glg-nectar>
-  <core-ajax id="addcm"
-  on-core-response="{{refresh}}"
-  on-core-error="{{handleerr}}"
-  handleAs="json">
-  </core-ajax>
-  <core-ajax id="removecm"
-  on-core-response="{{refresh}}"
-  on-core-error="{{handleerr}}"
-  handleAs="json">
-  </core-ajax>
-</section>
+
+
+      <glg-betagroup betagroup="recommended_cm_admin">
+        <ui-typeahead
+          on-change="{{addrel}}"
+          id="typeahead"
+          placeholder="Search for Council Members">
+
+          <icon search></icon>
+          <template id="results" repeat="{{resultset}}">
+            <template repeat="{{results}}">
+              <ui-typeahead-item id="{{id}}">
+                <strong>{{name}}</strong>
+                <span class="title">{{company}}</span>
+              </ui-typeahead-item>
+            </template>
+          </template>
+
+        </ui-typeahead>
+      </glg-betagroup>
+
+    </glg-nectar>
+
+    <core-ajax id="addcm"
+      on-core-response="{{refresh}}"
+      on-core-error="{{handleerr}}"
+      handleAs="json">
+    </core-ajax>
+
+    <core-ajax id="removecm"
+      on-core-response="{{refresh}}"
+      on-core-error="{{handleerr}}"
+      handleAs="json">
+    </core-ajax>
+  </section>
 </template>
-<script src="./glg-recommended-cm.litcoffee"></script>
 </polymer-element>
+
+<script src="./glg-recommended-cm.litcoffee"></script>

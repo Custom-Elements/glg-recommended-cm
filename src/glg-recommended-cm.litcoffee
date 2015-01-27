@@ -1,7 +1,6 @@
 #recommended-cm
 Query for council members, and store them as a managed list.
 
-    _ = require 'lodash'
     Polymer 'glg-recommended-cm',
 
 ##Attributes and Change Handlers
