@@ -2,15 +2,15 @@
   "name": "glg-recommended-cm",
   "version": "0.0.0",
   "dependencies": {
-    "glg-nectar": "git://github.com/Custom-Elements/glg-nectar",
-    "polymer": "git://github.com/custom-elements/polymer",
-    "polymer-serve": "git://github.com/custom-elements/polymer-serve",
-    "ui-fonts": "git://github.com/custom-elements/ui-fonts",
-    "ui-progress": "git://github.com/custom-elements/ui-progress",
-    "ui-styles": "git://github.com/custom-elements/ui-styles",
-    "ui-typeahead": "git://github.com/custom-elements/ui-typeahead",
-    "ui-tooltip": "git://github.com/custom-elements/ui-tooltip",
-    "glg-betagroup": "git://github.com/custom-elements/glg-betagroup"
+    "glg-nectar": "git+https://github.com/Custom-Elements/glg-nectar",
+    "polymer": "git+https://github.com/custom-elements/polymer",
+    "polymer-serve": "git+https://github.com/custom-elements/polymer-serve",
+    "ui-fonts": "git+https://github.com/custom-elements/ui-fonts",
+    "ui-progress": "git+https://github.com/custom-elements/ui-progress",
+    "ui-styles": "git+https://github.com/custom-elements/ui-styles",
+    "ui-typeahead": "git+https://github.com/custom-elements/ui-typeahead",
+    "ui-tooltip": "git+https://github.com/custom-elements/ui-tooltip",
+    "glg-betagroup": "git+https://github.com/custom-elements/glg-betagroup"
   },
   "license": "ISC",
   "scripts": {
